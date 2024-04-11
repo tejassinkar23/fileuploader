@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> You </title>
+    </head>
+    <script>
+        function handleFileUpload() {
+            var startTime = performance.now(); // Get the start time
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+
+            // Simulate file upload (you would replace this with your actual upload logic)
+            setTimeout(function() {
+                var endTime = performance.now(); // Get the end time
+                var uploadTime = (endTime - startTime) / 1000; // Calculate the upload time in seconds
+                alert("Upload time: " + uploadTime.toFixed(2) + " seconds");
+            }, 1000); // Simulating a delay of 1 second (1000 milliseconds) for demonstration
+        }
+    </script>
+    <body>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <input type="file" name="file" id="fileInput" onchange="handleFileUpload()" required>
+            <br>
+            <input type="submit">
+
+        </form>
+
+    </body>
+</html>
